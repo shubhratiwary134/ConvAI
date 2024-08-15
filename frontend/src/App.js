@@ -9,10 +9,10 @@ import { CheckVerification } from './services/CheckVerification';
 import ServerDownPopup from './components/ServerDownPopUp';
 import DebateRoom from './components/DebateRoom';
 import AdminPanel from './components/AdminPanel';
-import CharacterList from './components/CharacterList';
 import { AdminChoice } from './components/AdminChoice';
 import AdminDashboard from './components/AdminDashboard';
 import CharacterForm from './components/CharacterForm';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const serverDown = useStore((state)=>state.serverDown)
@@ -36,12 +36,13 @@ function App() {
       <Route path='/' element={<HomePage/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/signUp' element={<SignUp/>}></Route>
-      <Route path='/debateRoom' element={<DebateRoom/>}></Route>
-      <Route path='/adminPanel' element={<AdminPanel/>}></Route>
-      <Route path='/List' element={<CharacterList/>}></Route>
-      <Route path='/choice' element={<AdminChoice/>}></Route>
-      <Route path='/AdminDashboard' element={<AdminDashboard/>}></Route>
-      <Route path='/choice/form' element={<CharacterForm/>}></Route>
+      
+          {/* Protected Routes */}
+      <Route path='/debateRoom' element={<ProtectedRoute element={<DebateRoom></DebateRoom>}></ProtectedRoute>}></Route>
+      <Route path='/adminPanel' element={<ProtectedRoute element={<AdminPanel></AdminPanel>}></ProtectedRoute>}></Route>
+      <Route path='/choice' element={<ProtectedRoute element={<AdminChoice></AdminChoice>}></ProtectedRoute>}></Route>
+      <Route path='/AdminDashboard' element={<ProtectedRoute element={<AdminDashboard></AdminDashboard>}></ProtectedRoute>}></Route>
+      <Route path='/choice/form' element={<ProtectedRoute element={<CharacterForm></CharacterForm>}></ProtectedRoute>}></Route>
     </Routes>
     </BrowserRouter>
     </>
