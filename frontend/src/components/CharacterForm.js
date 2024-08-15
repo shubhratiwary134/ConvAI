@@ -27,5 +27,5 @@ const CharacterForm = () => {
     </div>
   )
 }
-
+    
 export default CharacterForm
