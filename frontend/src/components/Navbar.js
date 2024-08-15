@@ -4,7 +4,8 @@ import useStore from '../storage/store'
 import { CgProfile } from "react-icons/cg";
 import { LogoutUser } from '../services/CheckVerification';
 import { useNavigate } from 'react-router-dom';
-
+import { CiLogout } from "react-icons/ci";
+import { MdOutlineCreateNewFolder } from "react-icons/md";
 const Navbar = () => {
   const tokenVerified =useStore((state)=>state.tokenVerified)
   const username = useStore((state)=>state.username)
@@ -17,9 +18,11 @@ navigate('/choice')
         <p>ConvAI</p>
         {tokenVerified ?
          <div className='w-1/6 flex justify-around items-center'>
-          <button onClick={()=>LogoutUser()}>logout</button>
-          <button onClick={handleRouting}>Create character</button>
-          <div className='flex flex-col items-center'>
+        <button onClick={()=>LogoutUser()}> <CiLogout size={32} /></button>
+        <button onClick={handleRouting}><MdOutlineCreateNewFolder  size={32}/></button>
+      
+        
+        <div className='flex flex-col items-center'>
           <CgProfile size={16}/>
           <p className='text-sm'>{username}</p>
           </div>
